@@ -1,8 +1,12 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { calculatePoints } from "./App";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test("calculatePoints returns the expected values", () => {
+  const pointsForlessThan50 = calculatePoints(45);
+  expect(pointsForlessThan50).toBe(0);
+
+  const pointsForbetween50And100 = calculatePoints(51);
+  expect(pointsForbetween50And100).toBe(1);
+
+  const pointsForMore100 = calculatePoints(120);
+  expect(pointsForMore100).toBe(90);
 });
